@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="portada">
+  <div class="portada-texto">
+    <p class="etiqueta">Pokédex interactiva</p>
+    <h1>Explora cada línea evolutiva</h1>
+    <p class="suave">
+      Cada Pokémon es un nodo de un árbol. Las evoluciones se convierten en ramas,
+      y cada ramificación, como las de Eevee, se dibuja sin perder la estructura.
+    </p>
+    <a class="boton boton-primario" href="{{ url_for('vistas.explorar_inicial') }}">Abrir explorador</a>
+  </div>
+  <div id="estadisticas" class="estadisticas" aria-live="polite">
+    <div class="estado">Cargando estadísticas…</div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="titulo-busqueda">
+  <div class="cabecera-seccion">
+    <h2 id="titulo-busqueda">Buscar Pokémon</h2>
+    <p class="suave">Busca por nombre o por identificador. El algoritmo elegido recorre el árbol y muestra su orden de visita.</p>
+  </div>
+  <form id="formulario-busqueda" class="barra-busqueda">
+    <div class="campo campo-grande">
+      <label for="consulta">Nombre o identificador</label>
+      <input id="consulta" name="consulta" type="search" placeholder="Ej. Eevee o 133" autocomplete="off" required>
+    </div>
+    <div class="campo">
+      <label for="algoritmo">Algoritmo</label>
+      <select id="algoritmo" name="algoritmo">
+        <option value="dfs">DFS · profundidad</option>
+        <option value="bfs">BFS · anchura</option>
+      </select>
+    </div>
+    <button class="boton boton-primario" type="submit">Buscar</button>
+  </form>
+  <div id="resultado-busqueda" class="resultado-busqueda" aria-live="polite"></div>
+</section>
+
+<section class="panel" aria-labelledby="titulo-catalogo">
+  <div class="cabecera-seccion">
+    <h2 id="titulo-catalogo">Catálogo</h2>
+    <div id="filtro-tipos" class="filtros" role="group" aria-label="Filtrar por tipo"></div>
+  </div>
+  <div id="estado-catalogo" class="estado" aria-live="polite"></div>
+  <div id="catalogo" class="rejilla"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block titulo %}Administrar · PokéDex Explorer{% endblock %}
+
+{% block contenido %}
+<section class="portada portada-compacta">
+  <div class="portada-texto">
+    <p class="etiqueta">Gestión de datos</p>
+    <h1>Administrar Pokémon</h1>
+    <p class="suave">
+      Los cambios se guardan en <code>data/pokemon.json</code> y siguen disponibles después de reiniciar el servidor.
+      Las reglas (ids únicos, sin ciclos, una sola preevolución) se validan en el servidor.
+    </p>
+  </div>
+</section>
+
+<div class="admin-rejilla">
+
+  <section class="panel" aria-labelledby="titulo-registro">
+    <h2 id="titulo-registro">Registrar Pokémon</h2>
+    <form id="formulario-registro" class="formulario" novalidate>
+      <div class="fila">
+        <div class="campo">
+          <label for="registro-id">Identificador</label>
+          <input id="registro-id" name="id" type="number" min="1" step="1" required>
+        </div>
+        <div class="campo campo-grande">
+          <label for="registro-nombre">Nombre</label>
+          <input id="registro-nombre" name="nombre" type="text" minlength="2" maxlength="30" required>
+        </div>
+      </div>
+      <div class="fila">
+        <div class="campo">
+          <label for="registro-tipo1">Tipo principal</label>
+          <select id="registro-tipo1" name="tipo1" class="selector-tipos" required></select>
+        </div>
+        <div class="campo">
+          <label for="registro-tipo2">Tipo secundario (opcional)</label>
+          <select id="registro-tipo2" name="tipo2" class="selector-tipos"></select>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="registro-habilidades">Habilidades (separadas por comas, máximo 3)</label>
+        <input id="registro-habilidades" name="habilidades" type="text">
+      </div>
+      <div class="campo">
+        <label for="registro-descripcion">Descripción</label>
+        <textarea id="registro-descripcion" name="descripcion" rows="3" maxlength="400"></textarea>
+      </div>
+      <div class="campo">
+        <label for="registro-imagen">Imagen (ruta dentro de static/img, opcional)</label>
+        <input id="registro-imagen" name="imagen" type="text" placeholder="pokemon/025.png">
+      </div>
+      <div class="acciones">
+        <button type="submit" class="boton boton-primario">Registrar</button>
+      </div>
+      <p id="aviso-registro" class="aviso" role="status" hidden></p>
+    </form>
+  </section>
+
+  <section class="panel" aria-labelledby="titulo-evolucion">
+    <h2 id="titulo-evolucion">Crear evolución</h2>
+    <p class="suave">Solo se pueden enlazar Pokémon sin evoluciones previas. El padre puede ser cualquier Pokémon del catálogo.</p>
+    <form id="formulario-evolucion" class="formulario" novalidate>
+      <div class="campo">
+        <label for="evolucion-padre">Pokémon que evoluciona (padre)</label>
+        <select id="evolucion-padre" name="padre_id" required></select>
+      </div>
+      <div class="campo">
+        <label for="evolucion-hijo">Nueva forma (hijo)</label>
+        <select id="evolucion-hijo" name="hijo_id" required></select>
+      </div>
+      <div class="acciones">
+        <button type="submit" class="boton boton-primario">Conectar evolución</button>
+      </div>
+      <p id="aviso-evolucion" class="aviso" role="status" hidden></p>
+    </form>
+  </section>
+
+  <section class="panel panel-ancho" aria-labelledby="titulo-edicion">
+    <h2 id="titulo-edicion">Editar Pokémon</h2>
+    <form id="formulario-edicion" class="formulario" novalidate>
+      <div class="fila">
+        <div class="campo campo-grande">
+          <label for="edicion-pokemon">Pokémon</label>
+          <select id="edicion-pokemon" name="pokemon" required></select>
+        </div>
+      </div>
+      <div class="fila">
+        <div class="campo campo-grande">
+          <label for="edicion-nombre">Nombre</label>
+          <input id="edicion-nombre" name="nombre" type="text" minlength="2" maxlength="30" required>
+        </div>
+        <div class="campo">
+          <label for="edicion-tipo1">Tipo principal</label>
+          <select id="edicion-tipo1" name="tipo1" class="selector-tipos" required></select>
+        </div>
+        <div class="campo">
+          <label for="edicion-tipo2">Tipo secundario</label>
+          <select id="edicion-tipo2" name="tipo2" class="selector-tipos"></select>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="edicion-habilidades">Habilidades (separadas por comas, máximo 3)</label>
+        <input id="edicion-habilidades" name="habilidades" type="text">
+      </div>
+      <div class="campo">
+        <label for="edicion-descripcion">Descripción</label>
+        <textarea id="edicion-descripcion" name="descripcion" rows="3" maxlength="400"></textarea>
+      </div>
+      <div class="campo">
+        <label for="edicion-imagen">Imagen (ruta dentro de static/img)</label>
+        <input id="edicion-imagen" name="imagen" type="text">
+      </div>
+      <div class="acciones">
+        <button type="submit" class="boton boton-primario">Guardar cambios</button>
+      </div>
+      <p id="aviso-edicion" class="aviso" role="status" hidden></p>
+    </form>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.POKEDEX = { tipos: {{ tipos|tojson }} };
+</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

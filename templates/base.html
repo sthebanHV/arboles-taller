@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}PokéDex Explorer{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/placeholder.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body data-pagina="{{ pagina }}">
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="{{ url_for('vistas.inicio') }}">
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M2 32a30 30 0 0 1 60 0z" fill="#e63946"/>
+        <path d="M2 32a30 30 0 0 0 60 0z" fill="#f1f5ff"/>
+        <rect x="2" y="29" width="60" height="6" fill="#0b1a33"/>
+        <circle cx="32" cy="32" r="9" fill="#0b1a33"/>
+        <circle cx="32" cy="32" r="5" fill="#ffd166"/>
+      </svg>
+      <span>PokéDex <strong>Explorer</strong></span>
+    </a>
+    <nav class="navegacion" aria-label="Principal">
+      <a href="{{ url_for('vistas.inicio') }}" {% if pagina == 'inicio' %}aria-current="page"{% endif %}>Catálogo</a>
+      <a href="{{ url_for('vistas.explorar_inicial') }}" {% if pagina == 'explorar' %}aria-current="page"{% endif %}>Explorador</a>
+      <a href="{{ url_for('vistas.administrar') }}" {% if pagina == 'admin' %}aria-current="page"{% endif %}>Administrar</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    {% block contenido %}{% endblock %}
+  </main>
+
+  <footer class="pie">
+    Proyecto universitario · Árboles de evolución con Python, Flask y D3.js
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "pokemon": [
+    {
+      "id": 1,
+      "nombre": "Bulbasaur",
+      "tipos": ["Planta", "Veneno"],
+      "descripcion": "Lleva una semilla en el lomo desde que nace. Con el tiempo, la semilla crece junto a él y se convierte en una planta.",
+      "habilidades": ["Espesura", "Clorofila"],
+      "imagen": "pokemon/001.png"
+    },
+    {
+      "id": 2,
+      "nombre": "Ivysaur",
+      "tipos": ["Planta", "Veneno"],
+      "descripcion": "Cuando el capullo de su lomo empieza a crecer, pierde fuerza para sostenerse sobre sus patas. Absorbe más energía del sol para florecer.",
+      "habilidades": ["Espesura", "Clorofila"],
+      "imagen": "pokemon/002.png"
+    },
+    {
+      "id": 3,
+      "nombre": "Venusaur",
+      "tipos": ["Planta", "Veneno"],
+      "descripcion": "La flor de su lomo libera un aroma agradable que calma a quienes lo rodean. Cuanto más sol recibe, más vivo es su color.",
+      "habilidades": ["Espesura", "Clorofila"],
+      "imagen": "pokemon/003.png"
+    },
+    {
+      "id": 4,
+      "nombre": "Charmander",
+      "tipos": ["Fuego"],
+      "descripcion": "La llama de la punta de su cola indica su estado de salud. Cuando está feliz, la llama arde con fuerza.",
+      "habilidades": ["Mar Llamas", "Poder Solar"],
+      "imagen": "pokemon/004.png"
+    },
+    {
+      "id": 5,
+      "nombre": "Charmeleon",
+      "tipos": ["Fuego"],
+      "descripcion": "Es feroz en el combate. Cuando se enfurece, su llama se vuelve blanca de calor y bate su cola con violencia.",
+      "habilidades": ["Mar Llamas", "Poder Solar"],
+      "imagen": "pokemon/005.png"
+    },
+    {
+      "id": 6,
+      "nombre": "Charizard",
+      "tipos": ["Fuego", "Volador"],
+      "descripcion": "Vuela en busca de rivales fuertes. Sus llamas arden con tanto calor que pueden derretir rocas.",
+      "habilidades": ["Mar Llamas", "Poder Solar"],
+      "imagen": "pokemon/006.png"
+    },
+    {
+      "id": 7,
+      "nombre": "Squirtle",
+      "tipos": ["Agua"],
+      "descripcion": "Cuando se siente en peligro, se esconde en su caparazón y dispara agua a presión contra su enemigo.",
+      "habilidades": ["Torrente", "Piel Recia"],
+      "imagen": "pokemon/007.png"
+    },
+    {
+      "id": 8,
+      "nombre": "Wartortle",
+      "tipos": ["Agua"],
+      "descripcion": "Sus orejas peludas le sirven para medir el equilibrio. Su cola es tan resistente que puede nadar a gran velocidad.",
+      "habilidades": ["Torrente", "Piel Recia"],
+      "imagen": "pokemon/008.png"
+    },
+    {
+      "id": 9,
+      "nombre": "Blastoise",
+      "tipos": ["Agua"],
+      "descripcion": "Los cañones de su caparazón disparan chorros de agua capaces de perforar acero grueso.",
+      "habilidades": ["Torrente", "Piel Recia"],
+      "imagen": "pokemon/009.png"
+    },
+    {
+      "id": 133,
+      "nombre": "Eevee",
+      "tipos": ["Normal"],
+      "descripcion": "Su composición genética es inestable. Puede evolucionar en varias formas según el entorno en el que crece.",
+      "habilidades": ["Corredor", "Adaptabilidad"],
+      "imagen": "pokemon/133.png"
+    },
+    {
+      "id": 134,
+      "nombre": "Vaporeon",
+      "tipos": ["Agua"],
+      "descripcion": "Su organismo es muy parecido al de un pez. Puede esconderse bajo el agua sin dejar rastro.",
+      "habilidades": ["Absorbe Agua", "Hidratación"],
+      "imagen": "pokemon/134.png"
+    },
+    {
+      "id": 135,
+      "nombre": "Jolteon",
+      "tipos": ["Eléctrico"],
+      "descripcion": "Sus plumas se erizan y cargan electricidad estática. Puede lanzar rayos con la misma rapidez con la que corre.",
+      "habilidades": ["Absorbe Voltios", "Huida"],
+      "imagen": "pokemon/135.png"
+    },
+    {
+      "id": 136,
+      "nombre": "Flareon",
+      "tipos": ["Fuego"],
+      "descripcion": "Almacena calor en su interior. Su pelaje humea y su aliento puede alcanzar temperaturas muy altas.",
+      "habilidades": ["Mar Llamas"],
+      "imagen": "pokemon/136.png"
+    },
+    {
+      "id": 196,
+      "nombre": "Espeon",
+      "tipos": ["Psíquico"],
+      "descripcion": "Sus sentidos psíquicos le permiten predecir los cambios del clima y el humor de su entrenador.",
+      "habilidades": ["Sincronía"],
+      "imagen": "pokemon/196.png"
+    },
+    {
+      "id": 197,
+      "nombre": "Umbreon",
+      "tipos": ["Siniestro"],
+      "descripcion": "Evolucionó bajo la luz de la luna. Sus anillos brillan en la oscuridad y lo ayudan a confundir a sus rivales.",
+      "habilidades": ["Sincronía"],
+      "imagen": "pokemon/197.png"
+    }
+  ],
+  "evoluciones": [
+    {"padre": 1, "hijo": 2},
+    {"padre": 2, "hijo": 3},
+    {"padre": 4, "hijo": 5},
+    {"padre": 5, "hijo": 6},
+    {"padre": 7, "hijo": 8},
+    {"padre": 8, "hijo": 9},
+    {"padre": 133, "hijo": 134},
+    {"padre": 133, "hijo": 135},
+    {"padre": 133, "hijo": 136},
+    {"padre": 133, "hijo": 196},
+    {"padre": 133, "hijo": 197}
+  ]
+}

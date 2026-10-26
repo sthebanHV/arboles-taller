@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block titulo %}Explorador · PokéDex Explorer{% endblock %}
+
+{% block contenido %}
+<div class="explorador" data-pokemon-id="{{ pokemon_id }}">
+
+  <section class="panel panel-arbol" aria-labelledby="titulo-arbol">
+    <div class="cabecera-seccion">
+      <h2 id="titulo-arbol">Árbol de evolución</h2>
+      <div class="controles-zoom" role="group" aria-label="Controles del diagrama">
+        <button type="button" id="zoom-mas" class="boton-icono" aria-label="Acercar">+</button>
+        <button type="button" id="zoom-menos" class="boton-icono" aria-label="Alejar">−</button>
+        <button type="button" id="zoom-centrar" class="boton" aria-label="Centrar diagrama">Centrar</button>
+      </div>
+    </div>
+
+    <ul class="leyenda" aria-label="Leyenda de etapas">
+      <li><span class="punto punto-inicial"></span>Inicial</li>
+      <li><span class="punto punto-intermedia"></span>Intermedia</li>
+      <li><span class="punto punto-final"></span>Final</li>
+    </ul>
+
+    <div id="lienzo-arbol" class="lienzo-arbol">
+      <svg id="svg-arbol" role="img" aria-label="Diagrama de la línea evolutiva"></svg>
+    </div>
+    <div id="mensaje-arbol" class="estado mensaje-vacio" hidden></div>
+  </section>
+
+  <aside class="panel panel-ficha" aria-label="Ficha del Pokémon seleccionado">
+    <div id="ficha" aria-live="polite">
+      <div class="estado">Cargando ficha…</div>
+    </div>
+  </aside>
+
+  <section class="panel panel-recorridos" aria-labelledby="titulo-recorridos">
+    <div class="cabecera-seccion">
+      <div>
+        <h2 id="titulo-recorridos">Recorridos del árbol</h2>
+        <p class="suave">Orden de visita de toda la línea evolutiva, calculado en el servidor.</p>
+      </div>
+      <div class="segmentado" role="group" aria-label="Algoritmo de recorrido">
+        <button type="button" data-algoritmo="dfs" aria-pressed="true">DFS</button>
+        <button type="button" data-algoritmo="bfs" aria-pressed="false">BFS</button>
+        <button type="button" data-algoritmo="comparar" aria-pressed="false">Comparar</button>
+      </div>
+    </div>
+    <div id="recorridos" class="recorridos" aria-live="polite"></div>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/vendor/d3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/arbol.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}
